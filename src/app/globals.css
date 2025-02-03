@@ -1,21 +1,229 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'RobotoCondensed-Bold';
+  src: url(Fonts/RobotoCondensed-Bold.ttf);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@font-face {
+  font-family: 'JosefinSans-Light';
+  src: url(Fonts/static/JosefinSans-Light.ttf);
+}
+
+@font-face {
+  font-family: 'JosefinSans-VariableFont';
+  src: url(Fonts/JosefinSans-VariableFont_wght.ttf);
+}
+
+@font-face {
+  font-family: 'DancingScript-VariableFont_wght';
+  src: url(Fonts/DancingScript-VariableFont_wght.ttf);
+}
+
+/* Navbar.css */
+.navbar {
+    background-color: #BC2D25;
+    padding: 0px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    max-width: 1535px;
+    margin: 0 auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
+  
+  .navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo a {
+    color: ghostwhite;
+    font-size: 22px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'JosefinSans-VariableFont';
+  }
+  
+  .nav-links ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    color: ghostwhite;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    font-family: 'JosefinSans-VariableFont';
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #FFD700;
+  }
+  
+  .burger {
+    display: none;
+    cursor: pointer;
+  }
+  
+  .burger .line {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px 0;
+  }
+
+/*------------------------------------------ main page ------------------------------------------ */
+
+.notepad-background {
+  background-color: #FFF79A;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 100% 32px;
+  background-position: top;
+  min-height: 97.7vh; 
+  padding: 0;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  max-width: 1535px;
+  margin: 0 auto;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.notepad-background::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 2px;
+  height: 97.7vh;
+  background-color: red;
+  
 }
+
+.notepad-background .content1,
+.notepad-background .content2 {
+  display: flex;
+  justify-content: center; 
+}
+
+.notepad-background .content1 {
+  margin-top: 108px; 
+  font-family: 'JosefinSans-VariableFont';
+  font-size: 28px;
+}
+
+.notepad-background .content2 {
+  font-family: 'DancingScript-VariableFont_wght';
+  font-size: 170px;
+  line-height: 0;
+  white-space: nowrap;
+  margin-top: -4%;
+}
+
+.notepad-background .content3 {
+  font-family: 'JosefinSans-Light';
+  font-size: 30px;
+  /* line-height: 2; */
+  white-space: nowrap;
+  margin-top: -3%;
+}
+
+.cta-button {
+  background-color: #D9534F;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 46px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+  background-color: #C9302C; /* Slightly darker red */
+  transform: scale(1.1); /* Button grows slightly */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+
+/*------------------------------------------ reactive ------------------------------------------ */
+  
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    text-align: center;
+  }
+
+  .nav-links.active {
+    display: block;
+  }
+
+  .nav-links ul {
+    flex-direction: column;
+    padding: 10px 0;
+  }
+
+  .burger {
+    display: block;
+  }
+
+  /* main page */
+
+  .notepad-background {
+    min-height: 100vh; 
+  }
+
+  .notepad-background::before {
+    left: 10px; 
+  }
+
+  .notepad-background .content1 {
+    font-size: 3vw;
+  }
+
+  .notepad-background .content2 {
+    font-size: 19vw; 
+  }
+
+  .notepad-background .content3 { 
+    font-size: 4vw;
+  }
+
+}
+
+@media (max-width: 433px) {
+
+  /* main page */
+
+  .notepad-background .content1 {
+    font-size: 4.5vw;
+    margin-top: 150px;
+  }
+
+  .notepad-background .content2 {
+    margin-top: 25px;
+    font-size: 20vw;
+  }
+
+  .notepad-background .content3 { 
+    font-size: 4.5vw;
+    margin-top: 48px;
+  }
+
+}
+  
