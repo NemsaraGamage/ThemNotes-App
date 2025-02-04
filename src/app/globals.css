@@ -79,14 +79,13 @@
 
 /*------------------------------------------ main page ------------------------------------------ */
 
+/* 1st section */
 .notepad-background {
   background-color: #FFF79A;
   background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   background-size: 100% 32px;
   background-position: top;
-  min-height: 97.7vh; 
   padding: 0;
-  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,6 +94,7 @@
   width: 100%;
   max-width: 1535px;
   margin: 0 auto;
+  height: 686px;
 }
 
 .notepad-background::before {
@@ -103,9 +103,8 @@
   top: 0;
   left: 50px;
   width: 2px;
-  height: 97.7vh;
+  height: 686px;
   background-color: red;
-  
 }
 
 .notepad-background .content1,
@@ -115,14 +114,14 @@
 }
 
 .notepad-background .content1 {
-  margin-top: 108px; 
+  margin-top: 87px; 
   font-family: 'JosefinSans-VariableFont';
-  font-size: 28px;
+  font-size: 23px;
 }
 
 .notepad-background .content2 {
   font-family: 'DancingScript-VariableFont_wght';
-  font-size: 170px;
+  font-size: 180px;
   line-height: 0;
   white-space: nowrap;
   margin-top: -4%;
@@ -131,9 +130,22 @@
 .notepad-background .content3 {
   font-family: 'JosefinSans-Light';
   font-size: 30px;
-  /* line-height: 2; */
   white-space: nowrap;
-  margin-top: -3%;
+  margin-top: -2.4%;
+  font-weight: bold;
+}
+
+.notepad-background .content4{
+  ont-family: 'JosefinSans-Light';
+  font-size: 20px;
+  white-space: nowrap;
+  margin-top: 35px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.notepad-background .content4:hover{
+  color: #BC2D25;
 }
 
 .cta-button {
@@ -144,7 +156,7 @@
   padding: 12px 18px;
   border: none;
   border-radius: 5px;
-  margin-top: 46px;
+  margin-top: 47px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 }
@@ -153,6 +165,26 @@
   background-color: #C9302C; /* Slightly darker red */
   transform: scale(1.1); /* Button grows slightly */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+}
+
+/* 2nd section */
+
+.scroll-section-background{
+  width: 100%;
+  max-width: 1535px;
+  margin: 0 auto;
+}
+
+.scroll-content div:nth-of-type(1){
+  margin-top: 40px;
+}
+
+.scroll-content p{
+  text-align: center;
+  font-weight: bold;
+  font-family: 'RobotoCondensed-Bold';
+  font-size: 25px;
+  color: #070504;
 }
 
 
@@ -185,7 +217,7 @@
   /* main page */
 
   .notepad-background {
-    min-height: 100vh; 
+    min-height: 80vh; 
   }
 
   .notepad-background::before {
@@ -208,22 +240,27 @@
 
 @media (max-width: 433px) {
 
-  /* main page */
+  .notepad-background {
+    min-height: 49vh; 
+  }
+
+  .notepad-background::before {
+    left: 10px; 
+  }
 
   .notepad-background .content1 {
-    font-size: 4.5vw;
-    margin-top: 150px;
+    font-size: 20px;
+    margin-top: 55px; 
   }
 
   .notepad-background .content2 {
-    margin-top: 25px;
-    font-size: 20vw;
+    font-size: 98px; 
   }
 
   .notepad-background .content3 { 
-    font-size: 4.5vw;
-    margin-top: 48px;
+    font-size: 20px;
+    margin-top: 5px;
   }
 
 }
-  
+
