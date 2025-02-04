@@ -100,17 +100,32 @@ export default function Home() {
       {/* Scroll Animation Section */}
       <div className="scroll-section-background" ref={scrollRef}>
 
-        <motion.div 
-          className="scroll-content"
+        <motion.div        
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, ease: "easeOut" }}
           suppressHydrationWarning
         >
 
-          <div>
-            <p>Organize your thoughts, create categories, 
-              and make your note-taking experience seamless.</p>
+          <div className="scroll-content">
+            <p>One and only stop for your creativity</p>
+
+            <div>
+              <p>Organize your thoughts, create categories, 
+              and make your note-taking experience seamless by having it all at one place.</p>
+            </div>
+
+            {showButton && (
+              <motion.button 
+                className="get-started-button"
+                initial={{ opacity: 0, y: 20 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                transition={{ duration: 0.5, ease: "easeOut" }}
+                suppressHydrationWarning
+              >
+                See More
+              </motion.button>
+            )}
           </div>
           
         </motion.div>

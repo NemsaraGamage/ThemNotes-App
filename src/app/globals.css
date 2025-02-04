@@ -9,6 +9,11 @@
 }
 
 @font-face {
+  font-family: 'JosefinSans-Medium';
+  src: url(Fonts/static/JosefinSans-Medium.ttf);
+}
+
+@font-face {
   font-family: 'JosefinSans-VariableFont';
   src: url(Fonts/JosefinSans-VariableFont_wght.ttf);
 }
@@ -79,7 +84,7 @@
 
 /*------------------------------------------ main page ------------------------------------------ */
 
-/* 1st section */
+/* Intro section */
 .notepad-background {
   background-color: #FFF79A;
   background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
@@ -136,10 +141,10 @@
 }
 
 .notepad-background .content4{
-  ont-family: 'JosefinSans-Light';
+  font-family: 'JosefinSans-Light';
   font-size: 20px;
   white-space: nowrap;
-  margin-top: 35px;
+  margin-top: 40px;
   text-decoration: underline;
   cursor: pointer;
 }
@@ -162,35 +167,74 @@
 }
 
 .cta-button:hover {
-  background-color: #C9302C; /* Slightly darker red */
-  transform: scale(1.1); /* Button grows slightly */
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  background-color: #C9302C; 
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 /* 2nd section */
 
-.scroll-section-background{
+.scroll-section-background {
   width: 100%;
   max-width: 1535px;
   margin: 0 auto;
+  background: linear-gradient(135deg, #BC2D25 0%, #D9534F 100%);
+  height: 360px;
+  margin-top: 20px;
 }
 
-.scroll-content div:nth-of-type(1){
-  margin-top: 40px;
+.scroll-content{
+  display: flex;
+  flex-direction: column;
 }
 
 .scroll-content p{
   text-align: center;
   font-weight: bold;
   font-family: 'RobotoCondensed-Bold';
-  font-size: 25px;
-  color: #070504;
+  font-size: 60px;
+  color: #F9F6F2;
+  margin-top: 40px;
 }
 
+.scroll-content div{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.scroll-content div p{
+  text-align: center;
+  font-family: 'JosefinSans-Light';
+  font-size: 22px;
+  color: #F9F6F2;
+  margin-top: 40px;
+  margin-top: -10px;
+}
+
+.get-started-button{
+  background-color: #D9534F;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 20px 35px;
+  border: none;
+  border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 47px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.get-started-button:hover {
+  background-color: #FFF79A; 
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  color: black;
+}
 
 /*------------------------------------------ reactive ------------------------------------------ */
   
-@media (max-width: 768px) {
+@media (max-width: 814px) {
   .nav-links {
     display: none;
     position: absolute;
@@ -217,11 +261,12 @@
   /* main page */
 
   .notepad-background {
-    min-height: 80vh; 
+    height: 650px; 
   }
 
   .notepad-background::before {
     left: 10px; 
+    height: 650px; 
   }
 
   .notepad-background .content1 {
@@ -238,14 +283,17 @@
 
 }
 
-@media (max-width: 433px) {
+@media (max-width: 434px) {
+
+  /* main page */
 
   .notepad-background {
-    min-height: 49vh; 
+    height: 500px; 
   }
 
   .notepad-background::before {
     left: 10px; 
+    height: 500px; 
   }
 
   .notepad-background .content1 {
@@ -254,12 +302,35 @@
   }
 
   .notepad-background .content2 {
-    font-size: 98px; 
+    font-size: 11vh; 
   }
 
   .notepad-background .content3 { 
     font-size: 20px;
     margin-top: 5px;
+  }
+
+}
+
+@media (max-width: 360px) {
+
+  /* main page */
+
+  .notepad-background::before {
+    left: 5px; 
+  }
+
+  .notepad-background .content2 {
+    font-size: 10.8vh; 
+  }
+
+  .notepad-background .content3 { 
+    font-size: 2.2vh;
+    margin-top: 5px;
+  }
+
+  .notepad-background .content4 { 
+    font-size: 2.2vh;
   }
 
 }
