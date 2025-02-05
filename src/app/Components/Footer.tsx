@@ -1,5 +1,5 @@
 import React from "react";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessagesSquare, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -13,6 +13,7 @@ const Footer = () => {
           <Twitter />
           <Instagram />
           <Linkedin />
+          <MessagesSquare />
         </div>
       </div>
 
