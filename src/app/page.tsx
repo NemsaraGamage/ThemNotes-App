@@ -2,6 +2,7 @@
 import NavBarComp from "./Components/NavBar";
 import { motion, useInView } from 'framer-motion';
 import { useState, useEffect, useRef } from "react";
+import Footer from "./Components/Footer";
 
 export default function Home() {
   const text = "ThemNotes";
@@ -131,6 +132,8 @@ export default function Home() {
         </motion.div>
 
       </div>
+
+      <Footer></Footer>
     </>
   );
 }

@@ -22,6 +22,8 @@ const Navbar: React.FC = () => {
             <li><a href="/about">Files</a></li>
             <li><a href="/features">Notes</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/Login">Login </a></li>
+            <li><a href="/Login">Download </a></li>
           </ul>
         </div>
         <div className="burger" onClick={toggleMobileMenu}>
