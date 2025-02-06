@@ -23,6 +23,11 @@
   src: url(Fonts/DancingScript-VariableFont_wght.ttf);
 }
 
+@font-face {
+  font-family: 'FiraSans-Regular.ttf';
+  src: url(Fonts/FiraSans-Regular.ttf);
+}
+
 /* Navbar.css */
 .navbar {
   background-color: #BC2D25;
@@ -334,14 +339,21 @@
   margin-right: 20px;
   padding: 0 10px;
   box-shadow: 0px px 10px rgba(0, 0, 0, 0.2); 
+  border-right: 3px solid black;
+  height: 91.7vh;
+  background-color: #fdefb2;
 }
 
 .note-saved p{
   text-align: center;
   margin-top: 30px;
   font-size: 22px;
-  font-family: 'JosefinSans-Light';
-  
+  font-family: 'FiraSans-Regular.ttf';
+  font-weight: 500;
+}
+
+.note-saved p::after{
+  text-decoration: underline;
 }
 
 /* right section */
@@ -353,7 +365,6 @@
   max-width: 1100px;
 }
 
-
 input{
   padding: 12px;
   font-size: 16px;
@@ -364,28 +375,6 @@ input{
   border-bottom: 2px solid black;
   margin-top: 30px;
   width: 380px;
-}
-
-.editor-btn {
-  background-color: green;
-  color: white;
-  padding: 15px 15px;
-  border: none;
-  cursor: pointer;
-  max-width: 150px;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  align-self: flex-start;
-}
-
-.editor-btn:hover {
-  background-color: darkgreen;
-}
-
-.flex {
-  display: flex;
-  gap: 10px;
 }
 
 .toolbar-icons {
@@ -410,6 +399,34 @@ input{
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
 }
+
+.editor-container{
+  border-top: 2px solid black;
+  padding: 10px;
+}
+
+.editor-btn {
+  background-color: green;
+  color: white;
+  padding: 15px 15px;
+  border: none;
+  cursor: pointer;
+  max-width: 150px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+.editor-btn:hover {
+  background-color: darkgreen;
+}
+
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
 
 
 /*------------------------------------------ reactive ------------------------------------------ */
