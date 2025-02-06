@@ -42,7 +42,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
       TableCell,
       TableHeader,
     ],
-    content: '',
+    content: 'Start writing...',
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
@@ -60,8 +60,14 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
     <>
       <Navbar />
       <div className="note-container">
+
+        <div className='note-saved'>
+
+          <p>Previous Notes</p>
+
+        </div>
+
         <div className="note-items">
-          <h2>Create Note</h2>
 
           <input
             type="text"
@@ -106,7 +112,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
             </div>
           )}
 
-          <div className="border p-4 rounded-md">
+          <div className="editor-container">
             <EditorContent editor={editor} />
           </div>
 

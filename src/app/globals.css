@@ -320,44 +320,52 @@
 
 /*------------------------------------------ notes page ------------------------------------------ */
 
-/* Note container */
 .note-container {
   width: 100%;
   margin: 0 auto;
-  margin-top: 60px;
+  margin-top: 50px;
   max-width: 1535px;
+  display: flex;
 }
 
-/* Note items layout */
+/* left section */
+.note-saved{
+  width: 350px;
+  margin-right: 20px;
+  padding: 0 10px;
+  box-shadow: 0px px 10px rgba(0, 0, 0, 0.2); 
+}
+
+.note-saved p{
+  text-align: center;
+  margin-top: 30px;
+  font-size: 22px;
+  font-family: 'JosefinSans-Light';
+  
+}
+
+/* right section */
 .note-items {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
+  max-width: 1100px;
 }
 
-/* Heading style */
-.note-items h2 {
-  font-size: 40px;
-  color: #333;
-  margin-bottom: 10px;
-}
 
-/* Input and textarea styles */
-input, textarea {
+input{
   padding: 12px;
   font-size: 16px;
   border: 1px solid #FFFFFF;
   margin-bottom: 15px;
   outline: none;
   transition: border 0.3s ease-in-out;
+  border-bottom: 2px solid black;
+  margin-top: 30px;
+  width: 380px;
 }
 
-/* Specific style for input */
-input {
-  border-bottom: 2px solid green;
-}
-
-/* Save button styles */
 .editor-btn {
   background-color: green;
   color: white;
@@ -371,18 +379,15 @@ input {
   align-self: flex-start;
 }
 
-/* Button hover effect */
 .editor-btn:hover {
   background-color: darkgreen;
 }
 
-/* Toolbar layout */
 .flex {
   display: flex;
   gap: 10px;
 }
 
-/* Toolbar icon buttons */
 .toolbar-icons {
   background: transparent;
   border: none;
@@ -396,19 +401,15 @@ input {
   border-radius: 4px;
 }
 
-/* Toolbar button hover effect */
 .toolbar-icons:hover {
   background-color: #f0f0f0;
   color: #0070f3;
 }
 
-/* Toolbar button focus effect */
 .toolbar-icons:focus {
   outline: none;
   box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
 }
-
-
 
 
 /*------------------------------------------ reactive ------------------------------------------ */
