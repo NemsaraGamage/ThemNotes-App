@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import '../globals.css'; 
+import Link from 'next/link';
+import '../globals.css';
 
 const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,16 +15,15 @@ const Navbar: React.FC = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="logo">
-          <a href="">ThemNotes</a>
+          <Link href="/">ThemNotes</Link>
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="/about">Files</a></li>
-            <li><a href="/features">Notes</a></li>
-            <li><a href="/contact">Contact</a></li>
-            <li><a href="/Login">Login </a></li>
-            <li><a href="/Login">Download </a></li>
+            <li><Link href="/files">Files</Link></li>
+            <li><Link href="/Notes">Create Notes</Link></li>  {/* Navigates to page.tsx in /notes */}
+            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/login">Login</Link></li>
+            <li><Link href="/download">Download</Link></li>
           </ul>
         </div>
         <div className="burger" onClick={toggleMobileMenu}>

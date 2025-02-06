@@ -60,19 +60,19 @@
 .nav-links a {
   color: ghostwhite;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: bold;
   font-family: 'JosefinSans-VariableFont';
   transition: color 0.3s ease;
 }
 
-.nav-links ul li:nth-child(5) a, .nav-links ul li:nth-child(6) a {
+.nav-links ul li:nth-child(4) a, .nav-links ul li:nth-child(5) a {
   padding: 8px 20px; 
   border-bottom: 2px solid #FFF79A; 
   transition: all 0.3s ease-in-out;
 }
 
-.nav-links ul li:nth-child(5) a:hover, .nav-links ul li:nth-child(6) a:hover {
+.nav-links ul li:nth-child(4) a:hover, .nav-links ul li:nth-child(5) a:hover {
   background-color: #FFF79A; 
   color: black; 
   border-bottom: 2px solid black; 
@@ -303,6 +303,7 @@
 .footer-title {
   font-size: 19px;
   font-weight: bold;
+  color: #333;
   font-family: 'RobotoCondensed-Bold';
 }
 
@@ -310,7 +311,105 @@
   font-size: 16px;
   font-family: 'JosefinSans-VariableFont';
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
+
+.footer-list p:hover {
+  color: #D04741;
+}
+
+/*------------------------------------------ notes page ------------------------------------------ */
+
+/* Note container */
+.note-container {
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 60px;
+  max-width: 1535px;
+}
+
+/* Note items layout */
+.note-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Heading style */
+.note-items h2 {
+  font-size: 40px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Input and textarea styles */
+input, textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #FFFFFF;
+  margin-bottom: 15px;
+  outline: none;
+  transition: border 0.3s ease-in-out;
+}
+
+/* Specific style for input */
+input {
+  border-bottom: 2px solid green;
+}
+
+/* Save button styles */
+.editor-btn {
+  background-color: green;
+  color: white;
+  padding: 15px 15px;
+  border: none;
+  cursor: pointer;
+  max-width: 150px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: background-color 0.3s;
+  align-self: flex-start;
+}
+
+/* Button hover effect */
+.editor-btn:hover {
+  background-color: darkgreen;
+}
+
+/* Toolbar layout */
+.flex {
+  display: flex;
+  gap: 10px;
+}
+
+/* Toolbar icon buttons */
+.toolbar-icons {
+  background: transparent;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+}
+
+/* Toolbar button hover effect */
+.toolbar-icons:hover {
+  background-color: #f0f0f0;
+  color: #0070f3;
+}
+
+/* Toolbar button focus effect */
+.toolbar-icons:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
+}
+
+
+
 
 /*------------------------------------------ reactive ------------------------------------------ */
 
