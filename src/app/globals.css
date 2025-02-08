@@ -340,15 +340,28 @@
   display: flex;
 }
 
+.notes-navbar-container{
+  display: flex;
+  margin-top: 15px;
+}
+
+.notes-navbar-icons{
+  background: #2C2C2A;
+  border: none;
+  color: ghostwhite;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
 /* left section */
 .note-saved{
   width: 350px;
-  margin-right: 20px;
   padding: 0 10px;
   box-shadow: 0px px 10px rgba(0, 0, 0, 0.2); 
   border-right: 3px solid black;
   height: 100vh;
-  background-color: #fdefb2;
+  background-color: #BC2D25;
 }
 
 .note-saved p{
@@ -357,6 +370,7 @@
   font-size: 22px;
   font-family: 'FiraSans-Regular.ttf';
   font-weight: 500;
+  color: ghostwhite;
 }
 
 .note-saved p::after{
@@ -369,41 +383,49 @@
   flex-direction: column;
   gap: 15px;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1187px;
+  background-color: #2C2C2A;
 }
 
 input{
   padding: 12px;
   font-size: 16px;
-  border: 1px solid #FFFFFF;
+  background-color: transparent;
   margin-bottom: 15px;
   outline: none;
   transition: border 0.3s ease-in-out;
-  border-bottom: 2px solid black;
-  margin-top: 30px;
+  border: transparent;
+  border-bottom: 3px solid #808080;
+  margin-left: 7px;
   width: 380px;
+  color: white;
+}
+
+.editor-content-container{
+  border: 3px solid #808080;
+  margin: 0 10px 0 5px;
+  border-radius: 5px;
 }
 
 .toolbar-container{
   display: flex;
+  padding: 8px 0 2.5px 8px;
+  border-bottom: 1px solid #808080;
 }
 
 .toolbar-icons {
   background: transparent;
   border: none;
-  color: #333;
+  color: ghostwhite;
   cursor: pointer;
   padding: 8px;
-  transition: all 0.3s ease;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  transition: all 0.3s ease;
   border-radius: 4px;
 }
 
 .toolbar-icons:hover {
-  background-color: #f0f0f0;
-  color: #0070f3;
+  background: rgba(255, 255, 255, 0.1)
 }
 
 .toolbar-icons:focus {
@@ -411,33 +433,56 @@ input{
   box-shadow: 0 0 0 2px rgba(0, 112, 243, 0.5);
 }
 
-.editor-container{
-  border-top: 2px solid black;
-  padding: 10px;
+.color-picker-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.hidden-color-input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .editor-container .ProseMirror {
   outline: none !important; 
   border: none !important; 
-  height: 380px;
+  height: 440px;
   padding: 10px;
+  overflow: auto;
+  background-color: white;
+  color: black;
 }
 
-.editor-btn {
-  background-color: green;
-  color: white;
-  padding: 15px 15px;
+.editor-container .ProseMirror::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.editor-container .ProseMirror::-webkit-scrollbar-thumb {
+  background-color: #FFFFFF;
+  border-radius: 4px;
+}
+
+.editor-container .ProseMirror::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bottom-navbar{
+  display: flex;
+  border-top: 1px solid #808080;
+}
+
+.notes-bottom-navbar-icons{
+  background: #2C2C2A;
   border: none;
+  color: ghostwhite;
   cursor: pointer;
-  max-width: 150px;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: background-color 0.3s;
-  align-self: flex-start;
-}
-
-.editor-btn:hover {
-  background-color: darkgreen;
+  padding: 8px;
+  transition: all 0.3s ease;
 }
 
 /*------------------------------------------ reactive ------------------------------------------ */
@@ -564,6 +609,18 @@ input{
     font-size: 40px;
   }
 
+  .scroll-content div{
+    width: 95%;
+    margin-top: 60px;
+  }
+
+  .get-started-button{
+    margin-top: 0px;
+  }
+
+}
+
+@media (max-width: 413px) {
   /* footer */
 
   .footer-section1 {
@@ -573,7 +630,6 @@ input{
   .social-icons {
     margin-top: 30px;
   }
-
 }
 
 @media (max-width: 395px) {
@@ -592,14 +648,6 @@ input{
     font-size: 35px;
   }
 
-  .scroll-content div{
-    width: 100%;
-    margin-top: 60px;
-  }
-
-  .get-started-button{
-    margin-top: 0px;
-  }
 
 }
 

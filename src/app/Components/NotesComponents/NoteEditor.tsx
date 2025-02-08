@@ -10,8 +10,12 @@ import TableRow from '@tiptap/extension-table-row';
 import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import { Markdown } from 'tiptap-markdown';
-import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListOrdered, Heading3, Heading4 } from 'lucide-react'; // Import icons
-
+import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListOrdered, 
+  Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline } from 'lucide-react'; // Import icons
+import UnderlineExtension from "@tiptap/extension-underline";
+import Highlight from "@tiptap/extension-highlight";
+import Color from "@tiptap/extension-color";
+import TextStyle from '@tiptap/extension-text-style';
 interface Note {
   id: number;
   title: string;
@@ -30,18 +34,23 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
   const editor = useEditor({
     extensions: [
       StarterKit,
+      TextStyle, // Required for Color extension
+      Color,
       Markdown,
       Mention.configure({
         HTMLAttributes: {
-          class: 'mention',
+          class: "mention",
         },
       }),
       Table.configure({ resizable: true }),
       TableRow,
       TableCell,
       TableHeader,
+      UnderlineExtension,
+      Highlight.configure({ multicolor: true }),
+      Color,
     ],
-    content: 'Start writing...',
+    content: "Start writing...",
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
@@ -55,6 +64,8 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
     router.push('/');
   };
 
+  const [color, setColor] = useState("#000000");
+  
   return (
     <>
       
@@ -68,54 +79,109 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
         <div className="note-items">
 
+          {/* back home */}
+          <div className="notes-navbar-container">
+            <button  className="notes-navbar-icons">
+              <ArrowLeft strokeWidth={2.5} size={21} />
+              &nbsp; &nbsp;
+              <House strokeWidth={2.5} size={21} />
+            </button>
+          </div>
+
           <input
             type="text"
             placeholder="Note Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          
+          <div className='editor-content-container'>
 
-          {/* Toolbar for formatting */}
-          {editor && (
-            <div className="toolbar-container">
-              <button onClick={() => editor.chain().focus().toggleBold().run()} className="toolbar-icons">
-                <Bold strokeWidth={3} size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleItalic().run()} className="toolbar-icons">
-                <Italic size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleStrike().run()} className="toolbar-icons">
-                <Strikethrough size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().setParagraph().run()} className="toolbar-icons">
-                <AlignLeft size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} className="toolbar-icons">
-                <Heading1 size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
-                <Heading2 size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
-                <Heading3 size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
-                <Heading4 size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleBulletList().run()} className="toolbar-icons">
-                <List size={16} />
-              </button>
-              <button onClick={() => editor.chain().focus().toggleOrderedList().run()} className="toolbar-icons">
-                <ListOrdered size={16} />
-              </button>
+            {/* Toolbar for formatting */}
+            {editor && (
+              <div className="toolbar-container">
+                <button onClick={() => editor.chain().focus().toggleBold().run()} className="toolbar-icons">
+                  <Bold strokeWidth={3} size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleItalic().run()} className="toolbar-icons">
+                  <Italic size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleStrike().run()} className="toolbar-icons">
+                  <Strikethrough size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleUnderline().run()} className="toolbar-icons">
+                  <Underline size={16} />
+                </button>
+
+                <div className="color-picker-wrapper">
+                  <button className="toolbar-icons">
+                    <Baseline size={16} />
+                    <input
+                      type="color"
+                      value={color}
+                      onChange={(e) => {
+                        setColor(e.target.value);
+                        editor.chain().focus().setColor(e.target.value).run();
+                      }}
+                      className="hidden-color-input"
+                    />
+                  </button>
+                </div>
+
+                <button onClick={() => editor.chain().focus().toggleHighlight().run()} className="toolbar-icons">
+                  <Highlighter size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().setParagraph().run()} className="toolbar-icons">
+                  <AlignLeft size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()} className="toolbar-icons">
+                  <Heading1 size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
+                  <Heading2 size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
+                  <Heading3 size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} className="toolbar-icons">
+                  <Heading4 size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleBulletList().run()} className="toolbar-icons">
+                  <List size={16} />
+                </button>
+
+                <button onClick={() => editor.chain().focus().toggleOrderedList().run()} className="toolbar-icons">
+                  <ListOrdered size={16} />
+                </button>
+                
+              </div>
+            )}
+
+            {/* editor */}
+            <div className="editor-container">
+              <EditorContent className='editor' editor={editor} />
             </div>
-          )}
 
-          <div className="editor-container">
-            <EditorContent className='editor' editor={editor} />
+            {/* bottom bar options */}
+            <div className="bottom-navbar">
+                <button onClick={handleSave} className="notes-bottom-navbar-icons">
+                  <Save strokeWidth={2.5} size={21} />
+                </button>
+                <button className="notes-bottom-navbar-icons">
+                  <Download strokeWidth={2.5} size={21} />
+                </button>
+              </div>
           </div>
 
-          <button className='editor-btn' onClick={handleSave}>Save Note</button>
         </div>
       </div>
     </>
