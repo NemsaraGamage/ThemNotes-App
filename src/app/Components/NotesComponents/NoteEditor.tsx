@@ -10,7 +10,6 @@ import TableRow from '@tiptap/extension-table-row';
 import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import { Markdown } from 'tiptap-markdown';
-import Navbar from '../NavBar';
 import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListOrdered, Heading3, Heading4 } from 'lucide-react'; // Import icons
 
 interface Note {
@@ -58,7 +57,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
   return (
     <>
-      <Navbar />
+      
       <div className="note-container">
 
         <div className='note-saved'>
@@ -78,7 +77,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
           {/* Toolbar for formatting */}
           {editor && (
-            <div className="flex gap-2 mb-2 border-b pb-2">
+            <div className="toolbar-container">
               <button onClick={() => editor.chain().focus().toggleBold().run()} className="toolbar-icons">
                 <Bold strokeWidth={3} size={16} />
               </button>
@@ -113,7 +112,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
           )}
 
           <div className="editor-container">
-            <EditorContent editor={editor} />
+            <EditorContent className='editor' editor={editor} />
           </div>
 
           <button className='editor-btn' onClick={handleSave}>Save Note</button>

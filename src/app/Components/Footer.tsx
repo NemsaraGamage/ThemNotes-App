@@ -8,6 +8,7 @@ const Footer = () => {
       <div className="footer-section1">
 
         <p>ThemNotes</p>
+        
         <div className="social-icons">
           <Facebook />
           <Twitter />
