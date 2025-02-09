@@ -522,6 +522,30 @@ input{
     width: 80%;
   }
 
+  /* notes page */
+
+  .note-container {
+    flex-direction: column-reverse; 
+  }
+
+  .note-saved {
+    width: 100%;
+    border-right: none;
+    border-top: 3px solid black; 
+    padding: 10px 0;
+  }
+
+  .note-saved p {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .editor-content-container{
+    margin-bottom: 10px;
+  }
+
+
 }
 
 @media (max-width: 815px) {
@@ -583,29 +607,6 @@ input{
 
   .notepad-background .content3 { 
     font-size: 4vw;
-  }
-
-  /* notes page */
-
-  .note-container {
-    flex-direction: column-reverse; 
-  }
-
-  .note-saved {
-    width: 100%;
-    border-right: none;
-    border-top: 3px solid black; 
-    padding: 10px 0;
-  }
-
-  .note-saved p {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 32px;
-  }
-
-  .editor-content-container{
-    margin-bottom: 10px;
   }
 
 }

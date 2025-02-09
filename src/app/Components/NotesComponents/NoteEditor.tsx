@@ -65,6 +65,11 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
   };
 
   const [color, setColor] = useState("#000000");
+
+  const handleGoHome = () => {
+    router.push('/'); 
+    console.log('Home page loaded')
+  };
   
   return (
     <>
@@ -81,7 +86,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
           {/* back home */}
           <div className="notes-navbar-container">
-            <button className="notes-navbar-icons">
+            <button onClick={handleGoHome} className="notes-navbar-icons">
               <ArrowLeft strokeWidth={2.5} size={21} />
               &nbsp; &nbsp;
               <House strokeWidth={2.5} size={21} />
