@@ -11,7 +11,7 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import { Markdown } from 'tiptap-markdown';
 import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListOrdered, 
-  Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline } from 'lucide-react'; // Import icons
+  Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline, } from 'lucide-react'; // Import icons
 import UnderlineExtension from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Color from "@tiptap/extension-color";
@@ -81,12 +81,13 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
           {/* back home */}
           <div className="notes-navbar-container">
-            <button  className="notes-navbar-icons">
+            <button className="notes-navbar-icons">
               <ArrowLeft strokeWidth={2.5} size={21} />
               &nbsp; &nbsp;
               <House strokeWidth={2.5} size={21} />
             </button>
           </div>
+
 
           <input
             type="text"
@@ -173,13 +174,13 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
             {/* bottom bar options */}
             <div className="bottom-navbar">
-                <button onClick={handleSave} className="notes-bottom-navbar-icons">
-                  <Save strokeWidth={2.5} size={21} />
-                </button>
-                <button className="notes-bottom-navbar-icons">
-                  <Download strokeWidth={2.5} size={21} />
-                </button>
-              </div>
+              <button onClick={handleSave} className="notes-bottom-navbar-icons">
+                <Save strokeWidth={2.5} size={21} />
+              </button>
+              <button className="notes-bottom-navbar-icons">
+                <Download strokeWidth={2.5} size={21} />
+              </button>
+            </div>
           </div>
 
         </div>

@@ -407,19 +407,37 @@ input{
   border-radius: 5px;
 }
 
-.toolbar-container{
+.toolbar-container {
   display: flex;
   padding: 8px 0 2.5px 8px;
   border-bottom: 1px solid #808080;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling */
+  white-space: nowrap; 
+  scrollbar-width: thin; 
+  scrollbar-color: #808080 transparent; 
+}
+
+.toolbar-container::-webkit-scrollbar {
+  width: 1px; 
+}
+
+.toolbar-container::-webkit-scrollbar-thumb {
+  background: #808080; 
+  border-radius: 3px; 
+}
+
+.toolbar-container::-webkit-scrollbar-track {
+  background: transparent; 
 }
 
 .toolbar-icons {
   background: transparent;
+  flex-wrap: wrap;
   border: none;
   color: ghostwhite;
   cursor: pointer;
   padding: 8px;
-  display: flex;
   transition: all 0.3s ease;
   border-radius: 4px;
 }
@@ -451,7 +469,8 @@ input{
 .editor-container .ProseMirror {
   outline: none !important; 
   border: none !important; 
-  height: 440px;
+  /* height: 440px; */
+  height: 65vh;
   padding: 10px;
   overflow: auto;
   background-color: white;
@@ -459,12 +478,12 @@ input{
 }
 
 .editor-container .ProseMirror::-webkit-scrollbar {
-  width: 8px; 
+  width: 6px; 
 }
 
 .editor-container .ProseMirror::-webkit-scrollbar-thumb {
-  background-color: #FFFFFF;
-  border-radius: 4px;
+  background-color: #C0C0C0;
+  border-radius: 1px;
 }
 
 .editor-container .ProseMirror::-webkit-scrollbar-track {
@@ -487,6 +506,7 @@ input{
 
 /*------------------------------------------ reactive ------------------------------------------ */
 
+/* Width */
 @media (max-width: 904px) {
 
   /* main page */
@@ -565,14 +585,41 @@ input{
     font-size: 4vw;
   }
 
+  /* notes page */
+
+  .note-container {
+    flex-direction: column-reverse; 
+  }
+
+  .note-saved {
+    width: 100%;
+    border-right: none;
+    border-top: 3px solid black; 
+    padding: 10px 0;
+  }
+
+  .note-saved p {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 32px;
+  }
+
+  .editor-content-container{
+    margin-bottom: 10px;
+  }
+
 }
 
 @media (max-width: 549px) {
   
   /* main page */
-
   .scroll-content div{
     width: 100%;
+  }
+
+  /* notes page */
+  input{
+    width: 95%;
   }
   
 }
