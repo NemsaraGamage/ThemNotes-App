@@ -23,7 +23,6 @@ const Navbar: React.FC = () => {
             <li><Link href="/Notes">Create Notes</Link></li>  {/* Navigates to page.tsx in /notes */}
             <li><Link href="/contact">Contact</Link></li>
             <li><Link href="/login">Login</Link></li>
-            <li><Link href="/download">Download</Link></li>
           </ul>
         </div>
         <div className="burger" onClick={toggleMobileMenu}>

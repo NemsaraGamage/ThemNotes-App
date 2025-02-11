@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -16,25 +16,23 @@ import UnderlineExtension from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Color from "@tiptap/extension-color";
 import TextStyle from '@tiptap/extension-text-style';
+import { motion } from 'framer-motion';
 interface Note {
   id: number;
   title: string;
   content: string;
 }
 
-interface NoteEditorProps {
-  addNote: (note: Note) => void;
-}
-
-const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
+const NoteEditor: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const router = useRouter();
+  const [notes, setNotes] = useState<Note[]>([]);
 
   const editor = useEditor({
     extensions: [
       StarterKit,
-      TextStyle, // Required for Color extension
+      TextStyle,
       Color,
       Markdown,
       Mention.configure({
@@ -56,19 +54,43 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
     },
   });
 
-  const handleSave = () => {
-    if (!title.trim()) return alert('Title cannot be empty!');
-
-    const newNote: Note = { id: Date.now(), title, content };
-    addNote(newNote);
-    router.push('/');
-  };
-
   const [color, setColor] = useState("#000000");
 
   const handleGoHome = () => {
     router.push('/'); 
     console.log('Home page loaded')
+  };
+
+  // Fetch saved notes on load
+  useEffect(() => {
+    fetch('http://localhost:5000/notes')
+      .then(res => res.json())
+      .then(data => setNotes(data))
+      .catch(err => console.error('Error fetching notes:', err));
+  }, []);
+
+  // Save note to backend
+  const handleSave = async () => {
+    if (!title.trim()) return alert('Title cannot be empty!');
+
+    const newNote = { title, content };
+
+    try {
+      const res = await fetch('http://localhost:5000/notes', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newNote),
+      });
+
+      if (!res.ok) throw new Error('Failed to save note');
+      
+      const data = await res.json();
+      setNotes([...notes, { id: data.id, title, content }]);
+      setTitle('');
+      editor?.commands.setContent('');
+    } catch (error) {
+      console.error('Error saving note:', error);
+    }
   };
   
   return (
@@ -76,10 +98,27 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
       
       <div className="note-container">
 
-        <div className='note-saved'>
+        {/* Show Previous Notes */}
+        <div className="note-saved">
 
-          <p>Previous Notes</p>
+          <h3>Previous Notes</h3>
 
+          <motion.div
+           initial={{ opacity: 0, y: 20 }} 
+           animate={{ opacity: 1, y: 0 }} 
+           transition={{ duration: 0.5, ease: "easeIn" }} 
+          >
+            <ul className='notes_list_container'>
+              {notes.map(note => (
+                <li className='notes_list' key={note.id} onClick={() => {
+                  setTitle(note.title);
+                  editor?.commands.setContent(note.content);
+                }}>
+                  {note.title}
+                </li>
+              ))}
+            </ul>
+          </motion.div>    
         </div>
 
         <div className="note-items">
@@ -96,7 +135,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ addNote }) => {
 
           <input
             type="text"
-            placeholder="Note Title"
+            placeholder="Title"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />

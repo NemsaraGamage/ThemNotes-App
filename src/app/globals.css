@@ -46,6 +46,7 @@
   max-width: 1535px;
   margin: 0 auto;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
 }
 
 .navbar-container {
@@ -55,7 +56,7 @@
 }
   
 .logo a {
-  color: ghostwhite;
+  color: #EEEEEE;
   font-size: 22px;
   text-decoration: none;
   font-weight: bold;
@@ -69,7 +70,7 @@
 }
 
 .nav-links a {
-  color: ghostwhite;
+  color: #EEEEEE;
   text-decoration: none;
   font-size: 15px;
   font-weight: bold;
@@ -77,17 +78,18 @@
   transition: color 0.3s ease;
 }
 
-.nav-links ul li:nth-child(4) a, .nav-links ul li:nth-child(5) a {
+.nav-links ul li:nth-child(4) a {
   padding: 8px 20px; 
-  border-bottom: 2px solid #FFF79A; 
-  border-top: 2px solid #FFF79A;
+  border: 2px solid #FFF79A;
+  border-radius: 5px; 
   transition: all 0.3s ease-in-out;
 }
 
-.nav-links ul li:nth-child(4) a:hover, .nav-links ul li:nth-child(5) a:hover {
+.nav-links ul li:nth-child(4) a:hover {
   background-color: #FFF79A; 
-  color: black; 
-  border-bottom: 2px solid black; 
+  color: #333; 
+  border-color: #FFF79A; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links a:hover {
@@ -133,13 +135,18 @@
   left: 50px;
   width: 2px;
   height: 694px;
-  background-color: red;
+  background-color: #BC2D25;
+  opacity: 0.7; 
 }
 
 .notepad-background .content1,
-.notepad-background .content2 {
-  display: flex;
-  justify-content: center; 
+.notepad-background .content2,
+.notepad-background .content3,
+.notepad-background .content4 {
+    display: flex;
+    justify-content: center;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
 }
 
 .notepad-background .content1 {
@@ -178,7 +185,7 @@
 }
 
 .cta-button {
-  background-color: #D9534F;
+  background-color: #BC2D25;
   color: white;
   font-size: 15px;
   font-weight: bold;
@@ -188,12 +195,13 @@
   margin-top: 52px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.15);
 }
 
 .cta-button:hover {
-  background-color: #C9302C; 
-  transform: scale(1.1);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); 
+  background-color: #A52721;
+  transform: scale(1.05);
+  box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* 2nd section */
@@ -358,23 +366,44 @@
 .note-saved{
   width: 350px;
   padding: 0 10px;
-  box-shadow: 0px px 10px rgba(0, 0, 0, 0.2); 
-  border-right: 3px solid black;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+  border-right: 3px solid;
+  border-image: linear-gradient(to bottom, #333333, #282828) 1;
   height: 100vh;
-  background-color: #BC2D25;
+  background-color: #282828;
+  color: #EEEEEE; 
 }
 
-.note-saved p{
+.note-saved h3{
   text-align: center;
   margin-top: 30px;
   font-size: 22px;
   font-family: 'FiraSans-Regular.ttf';
-  font-weight: 500;
-  color: ghostwhite;
+  font-weight: bold;
+  color: #EEEEEE;
+  text-decoration: underline;
 }
 
-.note-saved p::after{
-  text-decoration: underline;
+.notes_list_container{
+  margin-top: 25px;
+}
+
+.notes_list {
+  padding-top: 10px;
+  border: none; 
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #333333; 
+  font-size: 16.5px;
+  font-family: 'JosefinSans-Medium'; 
+  color: #EEEEEE; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.2s; 
+}
+
+.notes_list:hover {
+  background-color: rgba(255, 255, 255, 0.1); 
 }
 
 /* right section */
@@ -384,7 +413,7 @@
   gap: 15px;
   width: 100%;
   max-width: 1187px;
-  background-color: #2C2C2A;
+  background-color: #282828;
 }
 
 input{
@@ -395,27 +424,28 @@ input{
   outline: none;
   transition: border 0.3s ease-in-out;
   border: transparent;
-  border-bottom: 3px solid #808080;
+  border-bottom: 3px solid #666666;
   margin-left: 7px;
   width: 380px;
-  color: white;
+  color: #EEEEEE;
 }
 
 .editor-content-container{
-  border: 3px solid #808080;
+  border: 3px solid #666666;
   margin: 0 10px 0 5px;
   border-radius: 5px;
+  background-color: #333333;
 }
 
 .toolbar-container {
   display: flex;
   padding: 8px 0 2.5px 8px;
-  border-bottom: 1px solid #808080;
+  border-bottom: 1px solid #666666;
   overflow-x: auto; /* Enable horizontal scrolling */
   overflow-y: hidden; /* Prevent vertical scrolling */
   white-space: nowrap; 
   scrollbar-width: thin; 
-  scrollbar-color: #808080 transparent; 
+  scrollbar-color: #666666 transparent; 
 }
 
 .toolbar-container::-webkit-scrollbar {
@@ -423,7 +453,7 @@ input{
 }
 
 .toolbar-container::-webkit-scrollbar-thumb {
-  background: #808080; 
+  background: #666666; 
   border-radius: 3px; 
 }
 
@@ -435,7 +465,7 @@ input{
   background: transparent;
   flex-wrap: wrap;
   border: none;
-  color: ghostwhite;
+  color: #EEEEEE;
   cursor: pointer;
   padding: 8px;
   transition: all 0.3s ease;
@@ -473,8 +503,8 @@ input{
   height: 65vh;
   padding: 10px;
   overflow: auto;
-  background-color: white;
-  color: black;
+  background-color: #333333;
+  color: #EEEEEE;
 }
 
 .editor-container .ProseMirror::-webkit-scrollbar {
@@ -482,7 +512,7 @@ input{
 }
 
 .editor-container .ProseMirror::-webkit-scrollbar-thumb {
-  background-color: #C0C0C0;
+  background-color: #666666;
   border-radius: 1px;
 }
 
@@ -492,16 +522,21 @@ input{
 
 .bottom-navbar{
   display: flex;
-  border-top: 1px solid #808080;
+  border-top: 1px solid #666666; 
+  background-color: #282828; 
 }
 
 .notes-bottom-navbar-icons{
-  background: #2C2C2A;
+  background: #282828;
   border: none;
-  color: ghostwhite;
+  color: #EEEEEE;
   cursor: pointer;
   padding: 8px;
   transition: all 0.3s ease;
+}
+
+.notes-bottom-navbar-icons:hover {
+  background: rgba(255, 255, 255, 0.1); 
 }
 
 /*------------------------------------------ reactive ------------------------------------------ */
