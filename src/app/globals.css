@@ -348,20 +348,6 @@
   display: flex;
 }
 
-.notes-navbar-container{
-  display: flex;
-  margin-top: 15px;
-}
-
-.notes-navbar-icons{
-  background: #2C2C2A;
-  border: none;
-  color: ghostwhite;
-  cursor: pointer;
-  padding: 8px;
-  transition: all 0.3s ease;
-}
-
 /* left section */
 .note-saved{
   width: 350px;
@@ -416,6 +402,20 @@
   background-color: #282828;
 }
 
+.notes-navbar-container{
+  display: flex;
+  margin-top: 15px;
+}
+
+.notes-navbar-icons{
+  background: transparent; 
+  border: none;
+  color: ghostwhite;
+  cursor: pointer;
+  padding: 8px;
+  transition: all 0.3s ease;
+}
+
 input{
   padding: 12px;
   font-size: 16px;
@@ -431,10 +431,10 @@ input{
 }
 
 .editor-content-container{
-  border: 3px solid #666666;
   margin: 0 10px 0 5px;
   border-radius: 5px;
   background-color: #333333;
+  border: 3px solid #666666;
 }
 
 .toolbar-container {
@@ -468,7 +468,6 @@ input{
   color: #EEEEEE;
   cursor: pointer;
   padding: 8px;
-  transition: all 0.3s ease;
   border-radius: 4px;
 }
 
@@ -499,9 +498,8 @@ input{
 .editor-container .ProseMirror {
   outline: none !important; 
   border: none !important; 
-  /* height: 440px; */
   height: 65vh;
-  padding: 10px;
+  padding: 20px 0 0 10px;
   overflow: auto;
   background-color: #333333;
   color: #EEEEEE;
@@ -527,7 +525,7 @@ input{
 }
 
 .notes-bottom-navbar-icons{
-  background: #282828;
+  background: transparent; 
   border: none;
   color: #EEEEEE;
   cursor: pointer;
@@ -538,6 +536,83 @@ input{
 .notes-bottom-navbar-icons:hover {
   background: rgba(255, 255, 255, 0.1); 
 }
+
+/* Light mode */
+
+.light-mode {
+  background-color: #f8f8f8; 
+  color: #333333; 
+}
+
+.light-mode .note-items {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.light-mode .notes-navbar-icons {
+  background: #ffffff;
+  color: #555555; 
+}
+
+.light-mode .notes-navbar-icons:hover {
+  background: #eee;
+  color: #333333;
+}
+
+.light-mode .editor-content-container {
+  border: 3px solid #ddd; 
+}
+
+.light-mode .editor-container .ProseMirror {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.light-mode .toolbar-container,
+.light-mode .bottom-navbar {
+  background-color: #ffffff; 
+  border-top: 1px solid #eee; 
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05); 
+}
+
+.light-mode .toolbar-container {
+  border-bottom: 1px solid #eee; 
+}
+
+.light-mode .toolbar-icons:hover {
+  background: rgba(0, 0, 0, 0.1); 
+}
+
+.light-mode .notes-bottom-navbar-icons {
+  color: #555555; 
+}
+
+.light-mode .notes-bottom-navbar-icons:hover {
+  color: #333333;
+}
+
+.light-mode input {
+  color: #333333;
+  border-bottom: 2px solid #aaa; 
+}
+
+.light-mode .toolbar-icons {
+  color: #555555; 
+  transition: color 0.2s; 
+}
+
+.light-mode .toolbar-icons:hover {
+  color: #333333; 
+}
+
+.light-mode .color-picker-wrapper input[type="color"] {
+  background-color: #ffffff; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  padding: 2px; 
+}
+
+
 
 /*------------------------------------------ reactive ------------------------------------------ */
 
