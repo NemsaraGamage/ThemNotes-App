@@ -386,10 +386,25 @@
   border-radius: 5px; 
   cursor: pointer; 
   transition: background-color 0.2s; 
+  list-style: none;
 }
 
 .notes_list:hover {
   background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.list-tools{
+  float: right;
+  padding: 0 5px 0 0;
+  display: flex;
+}
+
+.edit-note-icon{
+
+}
+
+.delete-note-icon{
+  margin-left: 10px;
 }
 
 /* right section */
@@ -416,6 +431,10 @@
   transition: all 0.3s ease;
 }
 
+.mode_icon{
+  margin-top: 6.3px;
+}
+
 input{
   padding: 12px;
   font-size: 16px;
@@ -428,6 +447,7 @@ input{
   margin-left: 7px;
   width: 380px;
   color: #EEEEEE;
+  margin-top: 10px;
 }
 
 .editor-content-container{
@@ -546,7 +566,6 @@ input{
 
 .light-mode .note-items {
   background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .light-mode .notes-navbar-icons {
@@ -572,7 +591,6 @@ input{
 .light-mode .bottom-navbar {
   background-color: #ffffff; 
   border-top: 1px solid #eee; 
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05); 
 }
 
 .light-mode .toolbar-container {
@@ -645,16 +663,17 @@ input{
     padding: 10px 0;
   }
 
-  .note-saved p {
-    margin-top: 25px;
-    text-align: center;
-    font-size: 32px;
+  .notes_list_container{
+    padding: 20px 20px;
+  }
+
+  .notes_list{
+    font-size: 20px;
   }
 
   .editor-content-container{
     margin-bottom: 10px;
   }
-
 
 }
 

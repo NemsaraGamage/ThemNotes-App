@@ -11,7 +11,10 @@ import TableCell from '@tiptap/extension-table-cell';
 import TableHeader from '@tiptap/extension-table-header';
 import { Markdown } from 'tiptap-markdown';
 import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListOrdered, 
-  Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline, } from 'lucide-react'; // Import icons
+  Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline,
+  Sun,
+  Moon,
+  Trash2, } from 'lucide-react'; // Import icons
 import UnderlineExtension from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Color from "@tiptap/extension-color";
@@ -30,6 +33,7 @@ const NoteEditor: React.FC = () => {
   const router = useRouter();
   const [notes, setNotes] = useState<Note[]>([]);
   const [isLightMode, setIsLightMode] = useState(false);
+  const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
 
   // Tools for the toolbar
   const editor = useEditor({
@@ -76,25 +80,51 @@ const NoteEditor: React.FC = () => {
   // Save note to backend
   const handleSave = async () => {
     if (!title.trim()) return alert('Title cannot be empty!');
-
+    
     const newNote = { title, content };
 
     try {
-      const res = await fetch('http://localhost:5000/notes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newNote),
-      });
+      let res;
+      if (selectedNoteId) {
+        // Update the existing note if one is selected
+        res = await fetch(`http://localhost:5000/notes/${selectedNoteId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newNote),
+        });
+      } else {
+        // Create a new note if none is selected
+        res = await fetch('http://localhost:5000/notes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newNote),
+        });
+      }
 
       if (!res.ok) throw new Error('Failed to save note');
       
       const data = await res.json();
-      setNotes([...notes, { id: data.id, title, content }]);
+      if (selectedNoteId) {
+        // Update the note in the state instead of adding a new one
+        setNotes(notes.map(note => note.id === selectedNoteId ? { ...note, title, content } : note));
+      } else {
+        // If it's a new note, add it to the state
+        setNotes([...notes, { id: data.id, title, content }]);
+      }
+
       setTitle('');
       editor?.commands.setContent('');
+      setSelectedNoteId(null); // Reset the selected note after saving
     } catch (error) {
       console.error('Error saving note:', error);
     }
+  };
+
+  // Handle selecting a note to edit
+  const handleNoteClick = (note: Note) => {
+    setTitle(note.title);
+    editor?.commands.setContent(note.content);
+    setSelectedNoteId(note.id); // Track which note is being edited
   };
 
   // Toggle dark/light mode
@@ -111,6 +141,21 @@ const NoteEditor: React.FC = () => {
       document.body.classList.remove('light-mode');
     }
   }, [isLightMode]);
+
+  // Delete a list
+  const handleDelete = async (noteId: number) => {
+    try {
+        const res = await fetch(`http://127.0.0.1:5000/notes/${noteId}`, { 
+            method: "DELETE",
+        });
+
+        if (!res.ok) throw new Error("Failed to delete note");
+
+        setNotes(notes.filter(note => note.id !== noteId));
+    } catch (error) {
+        console.error("Error deleting note:", error);
+    }
+  };
   
   return (
     <>
@@ -119,21 +164,23 @@ const NoteEditor: React.FC = () => {
 
         {/* Show Previous Notes */}
         <div className="note-saved">
-
           <h3>Previous Notes</h3>
-
           <motion.div
-           initial={{ opacity: 0, y: 20 }} 
-           animate={{ opacity: 1, y: 0 }} 
-           transition={{ duration: 0.5, ease: "easeIn" }} 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.5, ease: "easeIn" }} 
           >
             <ul className='notes_list_container'>
               {notes.map(note => (
-                <li className='notes_list' key={note.id} onClick={() => {
-                  setTitle(note.title);
-                  editor?.commands.setContent(note.content);
-                }}>
+                <li
+                  className='notes_list'
+                  key={note.id}
+                  onClick={() => handleNoteClick(note)} // Populate editor when a note is clicked
+                >
                   {note.title}
+                  <div className='list-tools'>
+                    <Trash2 onClick={() => handleDelete(note.id)} className='delete-note-icon' size={17} />
+                  </div>
                 </li>
               ))}
             </ul>
@@ -153,8 +200,31 @@ const NoteEditor: React.FC = () => {
                 &nbsp;&nbsp;
               </button>
 
-              <Switch checked={isLightMode} onChange={handleThemeToggle} />
-              {isLightMode ? 'Light Mode' : 'Dark Mode'}
+              <div className='mode_icon'>
+                {isLightMode ?  <Moon style={{ color: '#555555'  }} strokeWidth={2.5} size={22} /> : <Sun style={{ color: '#F8F8FF' }} strokeWidth={2.5} size={22} /> }
+              </div>
+              
+              <Switch
+              sx={{
+                '& .MuiSwitch-switchBase.Mui-checked': {
+                  '& .MuiSwitch-thumb': {
+                    backgroundColor: '#000', // Black when switched ON
+                  },
+                  '& + .MuiSwitch-track': {
+                    backgroundColor: '#333333', // Light gray track when ON
+                  },
+                },
+                '& .MuiSwitch-switchBase': {
+                  '& .MuiSwitch-thumb': {
+                    backgroundColor: '#fff', // White when switched OFF
+                  },
+                },
+                '& .MuiSwitch-track': {
+                  backgroundColor: '#444',  // Dark track when OFF
+                },
+              }} 
+              checked={isLightMode} onChange={handleThemeToggle} />
+             
             </div>
 
             {/* title input */}
