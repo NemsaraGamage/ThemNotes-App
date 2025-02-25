@@ -19,10 +19,10 @@ const Navbar: React.FC = () => {
         </div>
         <div className={`nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
           <ul>
-            <li><Link href="/files">Files</Link></li>
-            <li><Link href="/Notes">Create Notes</Link></li>  {/* Navigates to page.tsx in /notes */}
+            <li><Link href="/File">Files</Link></li>
+            <li><Link href="/CreateNotes">Create Notes</Link></li> 
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/login">Login</Link></li>
+            <li><Link href="/LoginPage">Login</Link></li>
           </ul>
         </div>
         <div className="burger" onClick={toggleMobileMenu}>

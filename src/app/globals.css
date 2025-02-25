@@ -630,7 +630,77 @@ input{
   padding: 2px; 
 }
 
+/*------------------------------------------ file page ------------------------------------------ */
 
+.notepad-background-files{
+  background-color: #FFF79A;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+  background-size: 100% 32px;
+  background-position: top;
+  padding: 20px;
+  width: 100%;
+  max-width: 1535px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.notepad-background-files h1{
+  margin-top: 68px;
+  font-size: 45px;
+  text-align: center;
+  font-family: 'RobotoCondensed-Bold';
+  letter-spacing: 3px;
+}
+
+.file-search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 31px 0;
+}
+
+.file-search-bar input{
+  width: 550px;
+  color: #282828;
+  text-align: center;
+}
+
+.file-saved-notes {
+  display: flex; 
+  flex-wrap: wrap;
+  gap: 15px; 
+  padding: 20px;
+  margin-top: 35px;
+  align-items: center;
+  justify-content: center;
+}
+
+.file-saved-notes div {
+  border-radius: 3px;
+  min-width: 400px;
+  max-width: 500px;
+  border-left: 1px solid #BC2D25;
+  border-right: 1px solid #BC2D25;
+  border-bottom: 1px solid #BC2D25;
+  margin-bottom: 12px;
+}
+
+.file-saved-notes div h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-family: 'JosefinSans-VariableFont';
+  font-size: 22px;
+  background-color: #BC2D25;
+  color: #EEEEEE;
+  padding-top: 4px;
+}
+
+.file-saved-notes div p{
+  font-family: 'FiraSans-Regular.ttf';
+  font-size: 15px;
+  padding: 0 4px 4px 4px;
+}
 
 /*------------------------------------------ reactive ------------------------------------------ */
 
