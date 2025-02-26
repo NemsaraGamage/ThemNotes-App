@@ -21,6 +21,7 @@ import Color from "@tiptap/extension-color";
 import TextStyle from '@tiptap/extension-text-style';
 import { motion } from 'framer-motion';
 import Switch from '@mui/material/Switch';
+import { useSearchParams } from "next/navigation";
 interface Note {
   id: number;
   title: string;
@@ -34,6 +35,13 @@ const NoteEditor: React.FC = () => {
   const [notes, setNotes] = useState<Note[]>([]);
   const [isLightMode, setIsLightMode] = useState(false);
   const [selectedNoteId, setSelectedNoteId] = useState<number | null>(null);
+
+  // Importing the content from the files page
+  const searchParams = useSearchParams();
+  const noteId = searchParams.get("id");
+  const noteTitle = searchParams.get("title");
+  const noteContent = searchParams.get("content");
+
 
   // Tools for the toolbar
   const editor = useEditor({
@@ -55,13 +63,27 @@ const NoteEditor: React.FC = () => {
       Highlight.configure({ multicolor: true }),
       Color,
     ],
-    content: "Start writing...",
+    content: "", // Default empty content
     onUpdate: ({ editor }) => {
       setContent(editor.getHTML());
     },
   });
 
   const [color, setColor] = useState("#000000");
+
+  // handles the importing of the specific note from the files page
+  useEffect(() => {
+    if (noteId && noteTitle && noteContent) {
+      setTitle(noteTitle);
+      editor?.commands.setContent(noteContent);
+      setSelectedNoteId(parseInt(noteId));
+    } else {
+      // If no note is being loaded, clear the editor
+      setTitle("");
+      editor?.commands.setContent("");
+      setSelectedNoteId(null);
+    }
+  }, [noteId, noteTitle, noteContent, editor]);
 
   // goes to the homepage
   const handleGoHome = () => {
