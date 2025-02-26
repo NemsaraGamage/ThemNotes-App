@@ -22,7 +22,7 @@ const Navbar: React.FC = () => {
             <li><Link href="/File">Files</Link></li>
             <li><Link href="/CreateNotes">Create Notes</Link></li> 
             <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/LoginPage">Login</Link></li>
+            <li><Link href="/Login">Login</Link></li>
           </ul>
         </div>
         <div className="burger" onClick={toggleMobileMenu}>

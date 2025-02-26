@@ -715,6 +715,78 @@ input{
   cursor: pointer;
 }
 
+/*------------------------------------------ login ------------------------------------------ */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  width: 400px;
+  padding: 20px;
+  background-color: #FFF8DC; 
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.login-title {
+  color: #2C2C2A;
+  font-family: 'JosefinSans-Medium';
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.error-msg{
+  margin-bottom: 10px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.login-input .MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 30px;
+}
+
+.login-input .MuiOutlinedInput-root:focus-within {
+  border-color: #B22222;
+  box-shadow: none;
+}
+
+.login-button {
+  background-color: #B22222 !important;
+  color: white !important;
+  font-weight: bold !important;
+  border-radius: 4px !important;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.login-button:hover {
+  background-color: #8B1A1A !important;
+}
+
+.login-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.login-form p{
+  text-align: center;
+  color: blue;
+  cursor: pointer;
+  font-family: 'FiraSans-Regular.ttf';
+  font-size: 13px;
+}
+
+
 /*------------------------------------------ reactive ------------------------------------------ */
 
 /* Width */
