@@ -641,7 +641,8 @@ input{
   width: 100%;
   max-width: 1535px;
   margin: 0 auto;
-  height: 100vh;
+  min-height: 100vh; 
+  height: auto; 
 }
 
 .notepad-background-files h1{
@@ -669,7 +670,7 @@ input{
 .file-saved-notes {
   display: flex; 
   flex-wrap: wrap;
-  gap: 15px; 
+  gap: 20px; 
   padding: 20px;
   margin-top: 35px;
   align-items: center;
@@ -703,7 +704,7 @@ input{
   padding: 0 4px 4px 4px;
 }
 
-.file-edit-btn{
+.file-edit-btn, .file-down-btn{
   margin: 15px 0 3px 10px;
   cursor: pointer;
 }

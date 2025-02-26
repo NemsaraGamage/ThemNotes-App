@@ -14,7 +14,8 @@ import { Bold, Italic, Strikethrough, AlignLeft, Heading1, Heading2, List, ListO
   Heading3, Heading4, House, Save, Download, ArrowLeft, Underline, Highlighter, Baseline,
   Sun,
   Moon,
-  Trash2, } from 'lucide-react'; // Import icons
+  Trash2,
+  SquarePlus, } from 'lucide-react'; // Import icons
 import UnderlineExtension from "@tiptap/extension-underline";
 import Highlight from "@tiptap/extension-highlight";
 import Color from "@tiptap/extension-color";
@@ -178,6 +179,38 @@ const NoteEditor: React.FC = () => {
         console.error("Error deleting note:", error);
     }
   };
+
+  // Function to handle downloading the note
+  const handleDownload = () => {
+    if (!title.trim() && !editor?.getText().trim()) {
+      alert("Note is empty!");
+      return;
+    }
+  
+    // Get plain text content from the editor
+    const plainTextContent = editor?.getText() || "";
+  
+    // Create a Blob object with the text content
+    const blob = new Blob([plainTextContent], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+  
+    // Create a download link
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${title.trim() || "Untitled"}.txt`; // Set filename as title
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+  
+  // Clearing the content of the editor
+  const handleNewNote = () => {
+    setTitle(""); // Clear the title input
+    editor?.commands.clearContent(); // Clear the editor content
+    setSelectedNoteId(null); // Reset selected note ID (if any)
+  };
+  
   
   return (
     <>
@@ -338,8 +371,11 @@ const NoteEditor: React.FC = () => {
                 <button onClick={handleSave} className="notes-bottom-navbar-icons">
                   <Save strokeWidth={2.5} size={21} />
                 </button>
-                <button className="notes-bottom-navbar-icons">
+                <button onClick={handleDownload} className="notes-bottom-navbar-icons">
                   <Download strokeWidth={2.5} size={21} />
+                </button>
+                <button onClick={handleNewNote} className="notes-bottom-navbar-icons">
+                  <SquarePlus strokeWidth={2.5} size={21}/>
                 </button>
               </div>
 
