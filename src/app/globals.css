@@ -649,7 +649,7 @@ input{
   margin-top: 68px;
   font-size: 45px;
   text-align: center;
-  font-family: 'RobotoCondensed-Bold';
+  font-family: 'FiraSans-Regular.ttf';
   letter-spacing: 3px;
 }
 
@@ -752,7 +752,7 @@ input{
 
 .login-input .MuiOutlinedInput-root {
   background-color: white;
-  border-radius: 30px;
+  border-radius: 8px;
 }
 
 .login-input .MuiOutlinedInput-root:focus-within {

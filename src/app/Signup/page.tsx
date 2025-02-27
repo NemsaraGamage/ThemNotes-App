@@ -2,15 +2,12 @@
 
 import { useState } from "react";
 import { TextField, Button, Card, CardContent, Typography } from "@mui/material";
-import { useRouter } from 'next/navigation';  // Add this line
 import '../globals.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  
-  const router = useRouter();  // Add this line
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,12 +19,13 @@ const LoginPage = () => {
     console.log("Logging in with", { email, password });
   };
 
+
   return (
     <div className="login-container">
       <Card className="login-card">
         <CardContent>
           <Typography variant="h5" align="center" gutterBottom className="login-title">
-            Login
+            Sign Up
           </Typography>
           {error && <Typography className="error-msg" color="error">{error}</Typography>}
           <form onSubmit={handleSubmit} className="login-form">
@@ -50,13 +48,18 @@ const LoginPage = () => {
               className="login-input"
             />
 
+            <TextField
+              fullWidth
+              label="Retype Password"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="login-input"
+            />
+
             <Button type="submit" variant="contained" className="login-button" fullWidth>
               Login
             </Button>
-
-            <p onClick={() => router.push('/Signup')} className="signup-link">
-              Would you like to Sign up?
-            </p>
 
           </form>
         </CardContent>
